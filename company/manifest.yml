@@ -1,0 +1,7 @@
+---
+memory: 512M
+applications:
+  - name: company
+    path: target/company-0.0.1-SNAPSHOT.jar
+    services:
+      - service-registry
