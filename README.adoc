@@ -6,7 +6,7 @@
 
 == Building and Deploying
 
-. Build the two projects from the root (`guide`) directory. If using Maven, run:
+. Build the two projects from the root (`traveler`) directory. If using Maven, run:
 +
 ....
 $ mvn package
