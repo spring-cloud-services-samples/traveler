@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.*;
 
-import io.pivotal.springcloud.ssl.CloudFoundryCertificateTruster;
-
 @RestController
 @EnableDiscoveryClient
 @SpringBootApplication
@@ -25,7 +23,6 @@ public class CompanyApplication {
     }
 
     public static void main(String[] args) {
-        CloudFoundryCertificateTruster.trustApiCertificate();
         SpringApplication.run(CompanyApplication.class, args);
     }
 }
