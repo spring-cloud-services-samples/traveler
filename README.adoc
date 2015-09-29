@@ -26,24 +26,6 @@ $ ./scripts/deploy_gradle.sh
 +
 The script will create Circuit Breaker Dashboard and Service Registry service instances and then push the applications and bind them to the appropriate services.
 
-. When the script has finished, set the `CF_TARGET` environment variable in both applications to the API endpoint of your Elastic Runtime instance (as in `api.example.com`), then restage the applications so that the changes will take effect.
-+
-....
-$ cf set-env company CF_TARGET black.wise.com
-Setting env variable 'CF_TARGET' to 'black.wise.com' for app company in org myorg / space outer as user...
-OK
-TIP: Use 'cf restage' to ensure your env variable changes take effect
-$ cf restage company
-....
-+
-....
-$ cf set-env agency CF_TARGET black.wise.com
-Setting env variable 'CF_TARGET' to 'black.wise.com' for app agency in org myorg / space outer as user...
-OK
-TIP: Use 'cf restage' to ensure your env variable changes take effect
-$ cf restage agency
-....
-
 == Trying It Out
 
 . Visit `[ROUTE]`, where `[ROUTE]` is the route bound to the Agency application. In the Agency application, the `getGuide()` method on the `TravelAgent` class will use the Service Registry to look up the Company application and get a guide name, which will be randomly selected from a pool of three.
