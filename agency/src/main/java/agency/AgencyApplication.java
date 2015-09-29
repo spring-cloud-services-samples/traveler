@@ -8,6 +8,8 @@ import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import io.pivotal.springcloud.ssl.CloudFoundryCertificateTruster;
+
 @SpringBootApplication
 @EnableDiscoveryClient
 @RestController
@@ -18,6 +20,7 @@ public class AgencyApplication {
     TravelAgent travelAgent;
 
     public static void main(String[] args) {
+        CloudFoundryCertificateTruster.trustApiCertificate();
         SpringApplication.run(AgencyApplication.class, args);
     }
 
