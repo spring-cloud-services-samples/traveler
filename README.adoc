@@ -43,6 +43,11 @@ OK
 TIP: Use 'cf restage' to ensure your env variable changes take effect
 $ cf restage agency
 ....
++
+[NOTE]
+====
+By default, the Spring Cloud Services Starters for Service Registry causes all application endpoints to be secured by HTTP Basic authentication. For more information or if you wish to disable this, http://scs-docs.black.springapps.io/spring-cloud-services/service-registry/registering-a-service.html#disable-http-basic-auth[see the documentation]. (HTTP Basic authentication is disabled in these sample applications.)
+====
 
 == Trying It Out
 
