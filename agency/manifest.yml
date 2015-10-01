@@ -6,3 +6,5 @@ applications:
     services:
       - service-registry
       - circuit-breaker-dashboard
+    env:
+      SPRING_PROFILES_ACTIVE: dev
