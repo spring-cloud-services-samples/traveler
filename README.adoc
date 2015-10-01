@@ -26,19 +26,19 @@ $ ./scripts/deploy_gradle.sh
 +
 The script will create Circuit Breaker Dashboard and Service Registry service instances and then push the applications and bind them to the appropriate services.
 
-. When the script has finished, set the `CF_TARGET` environment variable in both applications to the API endpoint of your Elastic Runtime instance (as in `api.example.com`), then restage the applications so that the changes will take effect.
+. When the script has finished, set the `CF_TARGET` environment variable in both applications to the API endpoint of your Elastic Runtime instance (as in `https://api.example.com`), then restage the applications so that the changes will take effect.
 +
 ....
-$ cf set-env company CF_TARGET api.wise.com
-Setting env variable 'CF_TARGET' to 'api.wise.com' for app company in org myorg / space outer as user...
+$ cf set-env company CF_TARGET https://api.wise.com
+Setting env variable 'CF_TARGET' to 'https://api.wise.com' for app company in org myorg / space outer as user...
 OK
 TIP: Use 'cf restage' to ensure your env variable changes take effect
 $ cf restage company
 ....
 +
 ....
-$ cf set-env agency CF_TARGET api.wise.com
-Setting env variable 'CF_TARGET' to 'api.wise.com' for app agency in org myorg / space outer as user...
+$ cf set-env agency CF_TARGET https://api.wise.com
+Setting env variable 'CF_TARGET' to 'https://api.wise.com' for app agency in org myorg / space outer as user...
 OK
 TIP: Use 'cf restage' to ensure your env variable changes take effect
 $ cf restage agency
