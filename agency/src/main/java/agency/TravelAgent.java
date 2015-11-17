@@ -16,7 +16,7 @@ public class TravelAgent {
 
     @HystrixCommand(fallbackMethod = "getBackupGuide")
     public String getGuide() {
-        return restTemplate.getForObject("http://company/available", String.class);
+        return restTemplate.getForObject("https://company/available", String.class);
     }
 
     String getBackupGuide() {
