@@ -1,0 +1,46 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.3.2.RELEASE")
+        classpath("io.spring.gradle:dependency-management-plugin:0.5.4.RELEASE")
+    }
+}
+
+apply plugin: "java"
+apply plugin: "spring-boot"
+apply plugin: "io.spring.dependency-management"
+
+jar {
+    baseName = "agency"
+    version = "0.0.1-SNAPSHOT"
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "io.pivotal.spring.cloud:spring-cloud-services-starter-parent:1.0.2.RELEASE"
+    }
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://repo.spring.io/libs-release"
+    }
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web:1.2.5.RELEASE")
+    compile("org.springframework.boot:spring-boot-starter-test")
+    compile("org.springframework.cloud:spring-cloud-starter-feign")
+    compile("io.pivotal.spring.cloud:spring-cloud-services-starter-service-registry")
+    compile("io.pivotal.spring.cloud:spring-cloud-services-starter-circuit-breaker")
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = "2.3"
+}
