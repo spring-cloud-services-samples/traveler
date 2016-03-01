@@ -1,0 +1,10 @@
+---
+instances: 1
+memory: 512M
+applications:
+  - name: agency
+    services:
+      - service-registry
+      - circuit-breaker-dashboard
+    env:
+      SPRING_PROFILES_ACTIVE: dev
