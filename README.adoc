@@ -25,6 +25,20 @@ $ ./scripts/deploy_gradle.sh
 ....
 +
 The script will create Circuit Breaker Dashboard and Service Registry service instances and then push the applications and bind them to the appropriate services.
++
+[NOTE]
+====
+If there are failures when the script attempts to bind a service, it is likely that the service was not fully initialized before the script ran the binding command. For each service that fails to bind to an application, you will need to bind the service manually using the `cf bind-service` command and then restage the application:
+
+....
+$ cf bind-service company service-registry
+Binding service service-registry to app company in org myorg / space outer as user...
+OK
+TIP: Use 'cf restage company' to ensure your env variable changes take effect
+$ cf restage company
+Restaging app company in org myorg / space outer as user...
+....
+====
 
 . When the script has finished, set the `CF_TARGET` environment variable in both applications to the API endpoint of your Elastic Runtime instance (as in `https://api.example.com`), then restage the applications so that the changes will take effect.
 +
@@ -46,7 +60,7 @@ $ cf restage agency
 +
 [NOTE]
 ====
-By default, the Spring Cloud Services Starters for Service Registry causes all application endpoints to be secured by HTTP Basic authentication. For more information or if you wish to disable this, http://scs-docs.black.springapps.io/spring-cloud-services/service-registry/registering-a-service.html#disable-http-basic-auth[see the documentation]. (HTTP Basic authentication is disabled in these sample applications.)
+By default, the Spring Cloud Services Starters for Service Registry causes all application endpoints to be secured by HTTP Basic authentication. For more information or if you wish to disable this, https://docs.pivotal.io/spring-cloud-services/service-registry/writing-client-applications.html#disable-http-basic-auth[see the documentation]. (HTTP Basic authentication is disabled in these sample applications.)
 ====
 
 == Trying It Out
