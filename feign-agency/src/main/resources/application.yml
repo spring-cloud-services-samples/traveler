@@ -1,6 +1,6 @@
 spring:
   application:
-    name: agency
+    name: ${vcap.application.name}
   cloud:
     services:
       registrationMethod: route
