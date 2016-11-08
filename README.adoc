@@ -26,19 +26,19 @@ $ ./scripts/deploy_gradle.sh
 +
 The script will create Circuit Breaker Dashboard and Service Registry service instances and then push the applications and bind them to the appropriate services.
 
-. When the script has finished, set the `CF_TARGET` environment variable to the API endpoint of your Elastic Runtime instance (as in `https://api.example.com`), then restage the applications so that the changes will take effect. Setting `CF_TARGET` causes Spring Cloud Services to add the the SSL certificate at the specfied API endpoint to the JVM's truststore, so that the client application can communicate with a Service Registry service instance even if your Elastic Runtime instance is using a self-signed SSL certificate (see the http://docs.pivotal.io/spring-cloud-services/service-registry/writing-client-applications.html#self-signed-ssl-certificate[Service Registry documentation]).
+. When the script has finished, set the `TRUST_CERTS` environment variable to the API endpoint of your Elastic Runtime instance (as in `api.example.com`), then restage the applications so that the changes will take effect. Setting `TRUST_CERTS` causes Spring Cloud Services to add the the SSL certificate at the specfied API endpoint to the JVM's truststore, so that the client application can communicate with a Service Registry service instance even if your Elastic Runtime instance is using a self-signed SSL certificate (see the http://docs.pivotal.io/spring-cloud-services/service-registry/writing-client-applications.html#self-signed-ssl-certificate[Service Registry documentation]).
 +
 ....
-$ cf set-env company CF_TARGET https://api.wise.com
-Setting env variable 'CF_TARGET' to 'https://api.wise.com' for app company in org myorg / space development as user...
+$ cf set-env company TRUST_CERTS api.wise.com
+Setting env variable 'TRUST_CERTS' to 'api.wise.com' for app company in org myorg / space development as user...
 OK
 TIP: Use 'cf restage' to ensure your env variable changes take effect
 $ cf restage company
 ....
 +
 ....
-$ cf set-env agency CF_TARGET https://api.wise.com
-Setting env variable 'CF_TARGET' to 'https://api.wise.com' for app agency in org myorg / space development as user...
+$ cf set-env agency TRUST_CERTS api.wise.com
+Setting env variable 'TRUST_CERTS' to 'api.wise.com' for app agency in org myorg / space development as user...
 OK
 TIP: Use 'cf restage' to ensure your env variable changes take effect
 $ cf restage agency
@@ -95,3 +95,5 @@ After the Company application has started and re-registered with the Service Reg
 image::closed-circuit.png[link:docs/images/closed-circuit.png]
 +
 You should again see calls to the Company application going through.
+
+For more information about the Circuit Breaker Dashboard and its use in a client application, see the http://docs.pivotal.io/spring-cloud-services/circuit-breaker/writing-client-applications.html[Circuit Breaker Dashboard documentation].
