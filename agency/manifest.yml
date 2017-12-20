@@ -3,6 +3,7 @@ instances: 1
 memory: 1G
 applications:
   - name: agency
+    random-route: true
     services:
       - service-registry
       - circuit-breaker-dashboard
