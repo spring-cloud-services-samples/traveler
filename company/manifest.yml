@@ -3,6 +3,6 @@ memory: 1G
 applications:
   - name: company
     services:
-      - service-registry
+      - traveler-service-registry
     env:
       SPRING_PROFILES_ACTIVE: dev

@@ -1,12 +1,12 @@
 @echo off
 echo Creating services...
-cf create-service p-circuit-breaker-dashboard standard circuit-breaker-dashboard > nul 
-cf create-service p-service-registry standard service-registry > nul 
+cf create-service p-circuit-breaker-dashboard standard traveler-circuit-breaker-dashboard > nul
+cf create-service p-service-registry standard traveler-service-registry > nul
 :checkCbd
-  cf service circuit-breaker-dashboard | find "succeeded" > nul
+  cf service traveler-circuit-breaker-dashboard | find "succeeded" > nul
   if errorlevel 1 goto :checkCbd
 :checkSr
-  cf service service-registry | find "succeeded" > nul
+  cf service traveler-service-registry | find "succeeded" > nul
   if errorlevel 1 goto :checkSr
   echo Services created. Pushing applications.
   pushd company
