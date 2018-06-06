@@ -13,37 +13,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- package agency;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.stereotype.Component;
+package agency;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
-@Component
-@EnableDiscoveryClient
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+@Service
 public class TravelAgent {
 
-    @Bean
-    @LoadBalanced
-    RestTemplate rest() {
-      return new RestTemplate();
-    }
+	private final RestTemplate rest;
 
-    @Autowired
-    RestTemplate restTemplate;
+	public TravelAgent(RestTemplate rest) {
+		this.rest = rest;
+	}
 
-    @HystrixCommand(fallbackMethod = "getBackupGuide")
-    public String getGuide() {
-        return restTemplate.getForObject("https://company/available", String.class);
-    }
+	@HystrixCommand(fallbackMethod = "getBackupGuide")
+	public String getGuide() {
+		return rest.getForObject("https://company/available", String.class);
+	}
 
-    String getBackupGuide() {
-        return "None available! Your backup guide is: Cookie";
-    }
+	String getBackupGuide() {
+		return "None available! Your backup guide is: Cookie";
+	}
 
 }

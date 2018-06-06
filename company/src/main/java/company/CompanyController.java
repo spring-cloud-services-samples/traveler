@@ -16,18 +16,21 @@
 
 package company;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import java.util.Arrays;
+import java.util.List;
 
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.apache.commons.lang.math.RandomUtils;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class CompanyApplicationTests {
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-	@Test
-	public void contextLoads() {
+@RestController
+public class CompanyController {
+
+	@RequestMapping("/available")
+	public String available() {
+		List<String> guides = Arrays.asList("Melchior", "Gaspar", "Balthazar");
+		return guides.get(RandomUtils.nextInt(guides.size()));
 	}
 
 }

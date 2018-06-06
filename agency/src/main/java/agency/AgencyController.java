@@ -16,18 +16,23 @@
 
 package agency;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+@RestController
+public class AgencyController {
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class AgencyApplicationTests {
+	private static final String RESPONSE_TEMPLATE = "Your guide will be: %s";
 
-	@Test
-	public void contextLoads() {
+	private final TravelAgent travelAgent;
+
+	public AgencyController(TravelAgent travelAgent) {
+		this.travelAgent = travelAgent;
+	}
+
+	@RequestMapping("/")
+	public String guide() {
+		return String.format(RESPONSE_TEMPLATE, travelAgent.getGuide());
 	}
 
 }
