@@ -4,7 +4,7 @@ memory: 1G
 applications:
   - name: agency
     services:
-      - service-registry
-      - circuit-breaker-dashboard
+      - traveler-service-registry
+      - traveler-circuit-breaker-dashboard
     env:
       SPRING_PROFILES_ACTIVE: dev
