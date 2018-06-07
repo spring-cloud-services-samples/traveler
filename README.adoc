@@ -1,5 +1,7 @@
 :imagesdir: docs/images
 
+image:https://circleci.com/gh/spring-cloud-services-samples/traveler.svg?style=svg["CircleCI", link="https://circleci.com/gh/spring-cloud-services-samples/traveler"]
+
 = Circuit Breaker Dashboard sample
 
 *Company* and *Agency* are example applications demonstrating the use of Circuit Breaker Dashboard for Pivotal Cloud Foundry. (For information on the Circuit Breaker Dashboard product, please http://docs.pivotal.io/spring-cloud-services/circuit-breaker/[see the documentation].)
