@@ -1,12 +1,10 @@
 spring:
   application:
-    name: ${vcap.application.name}
+    name: greeting
   cloud:
     services:
       registrationMethod: route
 
-  profiles: dev
-
-security:
-  basic:
-    enabled: false
+feign:
+  hystrix:
+    enabled: true

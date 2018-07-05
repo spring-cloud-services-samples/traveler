@@ -13,26 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- package agency;
 
-import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
+package agency;
 
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Service
-public class TravelAgent {
+@RestController
+public class AgencyController {
 
-    @Autowired
-    CompanyClient company;
+	private static final String RESPONSE_TEMPLATE = "Your guide will be: %s";
 
-    @HystrixCommand(fallbackMethod = "getBackupGuide")
-    public String getGuide() {
-        return company.availableGuide();
-    }
+	private final CompanyClient company;
 
-    String getBackupGuide() {
-        return "None available! Your backup guide is: Cookie";
-    }
+	public AgencyController(CompanyClient company) {
+		this.company = company;
+	}
+
+	@RequestMapping("/")
+	public String guide() {
+		return String.format(RESPONSE_TEMPLATE, company.availableGuide());
+	}
 
 }
