@@ -1,8 +1,8 @@
 ---
-instances: 1
-memory: 1G
 applications:
   - name: agency
+    instances: 1
+    memory: 1G
     services:
       - traveler-service-registry
       - traveler-circuit-breaker-dashboard
