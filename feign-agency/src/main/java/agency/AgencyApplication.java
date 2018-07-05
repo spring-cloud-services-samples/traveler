@@ -28,9 +28,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableFeignClients
 public class AgencyApplication {
 
-    @Autowired
-    CompanyClient company;
-
     public static void main(String[] args) {
         SpringApplication.run(AgencyApplication.class, args);
     }
