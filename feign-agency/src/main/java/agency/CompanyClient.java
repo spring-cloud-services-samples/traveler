@@ -27,7 +27,7 @@ public interface CompanyClient {
   String availableGuide();
 
 @Component
-  public class CompanyFallback implements CompanyClient {
+  public static class CompanyFallback implements CompanyClient {
     @Override
     public String availableGuide() {
       return "None available!";
