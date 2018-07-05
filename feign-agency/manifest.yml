@@ -1,10 +1,10 @@
 ---
-instances: 1
-memory: 1G
 applications:
   - name: agency
+    instances: 1
+    memory: 1G
     services:
-      - service-registry
-      - circuit-breaker-dashboard
+      - traveler-service-registry
+      - traveler-circuit-breaker-dashboard
     env:
-      SPRING_PROFILES_ACTIVE: dev
+      SPRING_PROFILES_ACTIVE: development
