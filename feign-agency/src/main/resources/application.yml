@@ -5,6 +5,12 @@ spring:
     services:
       registrationMethod: route
 
+feign:
+  hystrix:
+    enabled: true
+
+---
+spring:
   profiles: dev
 
 security:

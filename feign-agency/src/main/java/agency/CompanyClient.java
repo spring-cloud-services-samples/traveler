@@ -6,8 +6,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
-@FeignClient("https://company")
-interface CompanyClient {
-  @RequestMapping(value="/available", method = GET)
+@FeignClient(name = "company", fallback = CompanyClient.CompanyFallback.class)
+public interface CompanyClient {
+  @RequestMapping(method = GET, value="/available")
   String availableGuide();
+
+@Component
+  public static class CompanyFallback implements CompanyClient {
+    @Override
+    public String availableGuide() {
+      return "None available!";
+    }
+  }
 }
