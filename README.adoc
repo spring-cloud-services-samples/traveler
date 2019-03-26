@@ -2,7 +2,7 @@
 
 = Circuit Breaker Dashboard sample
 
-*Company* and *Agency* are example applications demonstrating the use of Circuit Breaker Dashboard for Pivotal Cloud Foundry. (For information on the Circuit Breaker Dashboard product, please http://docs.pivotal.io/spring-cloud-services/circuit-breaker/[see the documentation].)
+*Company* and *Agency* are example applications demonstrating the use of Circuit Breaker Dashboard for Pivotal Cloud Foundry. (For information on the Circuit Breaker Dashboard product, please https://docs.pivotal.io/spring-cloud-services/circuit-breaker/[see the documentation].)
 
 == Building and Deploying
 
@@ -26,7 +26,7 @@ $ ./scripts/deploy_gradle.sh
 +
 The script will create Circuit Breaker Dashboard and Service Registry service instances and then push the applications and bind them to the appropriate services.
 
-. When the script has finished, set the `TRUST_CERTS` environment variable to the API endpoint of your Elastic Runtime instance (as in `api.example.com`), then restage the applications so that the changes will take effect. Setting `TRUST_CERTS` causes Spring Cloud Services to add the the SSL certificate at the specfied API endpoint to the JVM's truststore, so that the client application can communicate with a Service Registry service instance even if your Elastic Runtime instance is using a self-signed SSL certificate (see the http://docs.pivotal.io/spring-cloud-services/service-registry/writing-client-applications.html#self-signed-ssl-certificate[Service Registry documentation]).
+. When the script has finished, set the `TRUST_CERTS` environment variable to the API endpoint of your Elastic Runtime instance (as in `api.example.com`), then restage the applications so that the changes will take effect. Setting `TRUST_CERTS` causes Spring Cloud Services to add the the SSL certificate at the specfied API endpoint to the JVM's truststore, so that the client application can communicate with a Service Registry service instance even if your Elastic Runtime instance is using a self-signed SSL certificate (see the https://docs.pivotal.io/spring-cloud-services/service-registry/writing-client-applications.html#self-signed-ssl-certificate[Service Registry documentation]).
 +
 ....
 $ cf set-env company TRUST_CERTS api.wise.com
@@ -58,7 +58,7 @@ image::guide.png[link:docs/images/guide.png]
 You can simulate load on the Agency application by using `curl`.
 +
 ....
-$ while true; do curl http://agency.wise.com; done
+$ while true; do curl https://agency.wise.com; done
 ....
 
 . To see the circuit breaker in action, stop the Company application. (You can do this either from Pivotal Cloud Foundry Apps Manager or using the cf Command Line Interface tool.)
@@ -96,4 +96,4 @@ image::closed-circuit.png[link:docs/images/closed-circuit.png]
 +
 You should again see calls to the Company application going through.
 
-For more information about the Circuit Breaker Dashboard and its use in a client application, see the http://docs.pivotal.io/spring-cloud-services/circuit-breaker/writing-client-applications.html[Circuit Breaker Dashboard documentation].
+For more information about the Circuit Breaker Dashboard and its use in a client application, see the https://docs.pivotal.io/spring-cloud-services/circuit-breaker/writing-client-applications.html[Circuit Breaker Dashboard documentation].
