@@ -25,6 +25,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.security.test.context.support.WithMockUser;
 
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -32,7 +33,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(controllers = AgencyController.class, secure = false)
+@WebMvcTest(controllers = AgencyController.class)
 public class AgencyControllerTests {
 
 	@Autowired
@@ -41,10 +42,12 @@ public class AgencyControllerTests {
 	@MockBean
 	private TravelAgent travelAgent;
 
+  @WithMockUser(value = "Cookie")
 	@Test
 	public void contextLoads() {
 	}
 
+  @WithMockUser(value = "Cookie")
 	@Test
 	public void guide() throws Exception {
 		given(this.travelAgent.getGuide())

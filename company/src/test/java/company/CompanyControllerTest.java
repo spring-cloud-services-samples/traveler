@@ -27,22 +27,25 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.security.test.context.support.WithMockUser;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(controllers = CompanyController.class, secure = false)
+@WebMvcTest(controllers = CompanyController.class)
 public class CompanyControllerTest {
 
 	@Autowired
 	private MockMvc mvc;
 
+  @WithMockUser(value = "Cookie")
 	@Test
 	public void contextLoads() {
 	}
 
+  @WithMockUser(value = "Cookie")
 	@Test
 	public void available() throws Exception {
 		MvcResult result = this.mvc.perform(get("/available")
