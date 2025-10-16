@@ -1,3 +1,5 @@
+= THIS REPOSITORY IS NO LONGER UNDER ACTIVE DEVELOPMENT
+
 :imagesdir: docs/images
 
 image:https://circleci.com/gh/spring-cloud-services-samples/traveler.svg?style=svg["CircleCI", link="https://circleci.com/gh/spring-cloud-services-samples/traveler"]
